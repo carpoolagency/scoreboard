@@ -5,12 +5,21 @@
     <title>Scoreboard</title>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="myclient.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Michroma' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
+  
   <body>
-    <H1>PROOF OF CONCEPT FOR SCOREBOARD APP </H1>
-    <div id="input"></div>
-
-    <button onclick="increaseScore()">POINT FOR PLAYER 1</button>
-    <button onclick="increaseScore()">POINT FOR PLAYER 2</button>
+    <div id="title">Ping Pong Scoreboard</div>
+    <div class="container">
+        <div class="scoreSection red">
+          <div id="player1Score"></div>
+        </div>
+        <div class="scoreSection blue">
+          <div id="player2Score"></div>
+        </div> 
+        <button onclick="increaseScore1()">POINT FOR PLAYER 1</button>
+        <button onclick="increaseScore()">POINT FOR PLAYER 2</button>
+    </div>
   </body>
 </html>
