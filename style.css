@@ -2,6 +2,10 @@
 	font-family: 'Michroma', sans-serif;
 }
 
+body {
+	margin: 0;
+}
+
 #title { 
 	text-transform: capitalize;
 	font-size: 4em;
@@ -15,13 +19,43 @@
 }
 
 .red {
-	background-color: red;
+	background-color: #ff0017;
 	float:left;
 	display: block;
 }
 
 .blue {
-	background-color: blue;
+	background-color: #0043ff;
 	float:right;
 	display: block;
+}
+
+#player1Score, #player2Score {
+	font-size: 12em;
+	color: white;
+	margin: auto auto;
+}
+
+#player1Name, #player2Name {
+	font-size: 8em;
+	color:white;
+}
+
+.redUp, .redDown, .blueUp, .blueDown {
+	float:left;
+	font-size: 3em;
+	width:5em;
+	margin: 0;
+	padding: 0;
+}
+
+.redUp:hover, .redDown:hover, .blueUp:hover, .blueDown:hover {
+	background: rgba(0,0,0,.2);
+}
+
+.controls {
+	width:30em;
+	margin:auto;
+	margin-top: 5em;
+	color: white
 }
