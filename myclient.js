@@ -43,3 +43,17 @@ function decreaseScore(id) {
       }
   });
 }
+
+function resetScores() {
+  var url = document.URL + 'players/resetScores';
+  $.ajax({
+      url: url,
+      type: 'PUT',
+      success: function(result) {
+          console.log('Reset the scores');
+          // Update the scores in HTML
+          $('#player1Score').hide().html(result[0].score).fadeIn('fast');
+          $('#player2Score').hide().html(result[1].score).fadeIn('fast');
+      }
+  });
+}

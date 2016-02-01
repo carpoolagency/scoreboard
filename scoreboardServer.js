@@ -42,6 +42,13 @@ app.put('/players/:id/decreaseScore', function(request, response) {
     }
 });
 
+app.put('/players/resetScores', function(request, response) {
+    console.log("request to resetScores");
+    players[0].score = 0;
+    players[1].score = 0;
+    response.status(200).send(players);
+});
+
 //TODO: implement reset function
 
 // Express route for any other unrecognized incoming requests
