@@ -2,45 +2,39 @@ window.onload = function () {
   var url,
       jqxhr;
 
-    url1 = document.URL + 'inputs/0';
-    url2 = document.URL + 'inputs/1';
+    url1 = document.URL + 'players/0';
+    url2 = document.URL + 'players/1';
     jqxhr = $.getJSON(url1, function(data) {
       console.log('API for P1 response received');
 
-      $('#player1Score').append('<p>Player ' + data['name'] + ' has ' +
-        data['score'] + ' points.</p>');
+      $('#player1Name').html('Player ' + data['name']);
+      $('#player1Score').html(data['score'] + ' points');
     });
 
     jqxhr = $.getJSON(url2, function(data) {
       console.log('API for P2 response received');
-      $('#player2Score').append('<p>Player ' + data['name'] + ' has ' +
-        data['score'] + ' points.</p>');
+      $('#player2Name').html('Player ' + data['name']);
+      $('#player2Score').html(data['score'] + ' points');
     });
 };
 
 
-function increaseScore1() {
-  var url = document.URL + 'inputsScore/0';
-  var jqxhr = $.getJSON(url, function(data) {
-    console.log('trying to increase score for player 1');
+function increaseScore(id) {
+  var url = document.URL + 'players/' + id + '/increaseScore';
+  $.ajax({
+    url: url,
+    type: 'PUT',
+    success: function(result) {
+      console.log('Increased the score!');
+      updateScore(id);
+    }
   });
-  updateScore(0);
 }
 
 function updateScore(id) {
-  var url = document.URL + 'inputsScore/' + id;
-  var jqxhr = $.getJSON(url, function(data) {
-    var selector;
-    if(id === 0) {
-      selector = '#player1Score';
-    }
-
-    if(id == 1) {
-      selector = "#player2Score";
-    }
-
-    $(selector).append('<p>Player ' + data['name'] + ' has ' +
-        data['score'] + ' points.</p>');
+  var url = document.URL + 'players/' + id;
+  $.getJSON(url, function(data) {
+    $('#player' + id + 'Score').hide().html(data['score']).fadeIn('fast');
   });
 } 
 

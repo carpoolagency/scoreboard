@@ -29,6 +29,8 @@ app.put('/players/:id/decreaseScore', function(request, response) {
   response.status(200).send();  
 });
 
+//TODO: implement reset function
+
 // Express route for any other unrecognized incoming requests
 app.get('*', function(req, res) {
   res.status(404).send('Unrecognized API call');
