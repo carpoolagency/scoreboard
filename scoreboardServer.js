@@ -16,30 +16,13 @@ app.get('/players/:id', function(request, response) {
     response.status(200).send(players[request.params.id]);
 });
 
+
 app.put('/players/:id/increaseScore', function(request, response) {
-    console.log("request to increase score of player with id", request.params.id);
-    if (request.params.id != 1 && request.params.id != 0) {
-        // 406 status is 'not acceptable' https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
-        console.log("There's no player with this id");
-        response.status(406).send("There is no player with id: " + request.params.id);
-    } else {
-        console.log("Attempting to increase score");
-        players[request.params.id].score += 1;
-        response.status(200).send(players[request.params.id].score.toString());
-    }
+  adjustScore(request, response, 1);
 });
 
 app.put('/players/:id/decreaseScore', function(request, response) {
-    console.log("request to decrease score of player with id", request.params.id);  
-    if (request.params.id != 1 && request.params.id != 0) {
-        // 406 status is 'not acceptable' https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
-        console.log("There's no player with this id");
-        response.status(406).send("There is no player with id: " + request.params.id);
-    } else {
-        console.log("going to decrease score of player ", players[request.params.id]);
-        players[request.params.id].score -= 1;
-        response.status(200).send(players[request.params.id].score.toString());
-    }
+  adjustScore(request, response, -1);
 });
 
 app.put('/players/resetScores', function(request, response) {
@@ -49,7 +32,18 @@ app.put('/players/resetScores', function(request, response) {
     response.status(200).send(players);
 });
 
-//TODO: implement reset function
+function adjustScore(request, response, deltaPoint) {
+    console.log("request to change score of player with id", request.params.id);  
+    if (request.params.id != 1 && request.params.id != 0) {
+        // 406 status is 'not acceptable' https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
+        console.log("There's no player with this id");
+        response.status(406).send("There is no player with id: " + request.params.id);
+    } else {
+        console.log("going to change the score of player ", players[request.params.id]);
+        players[request.params.id].score += deltaPoint;
+        response.status(200).send(players[request.params.id].score.toString());      
+    }
+}
 
 // Express route for any other unrecognized incoming requests
 app.get('*', function(req, res) {

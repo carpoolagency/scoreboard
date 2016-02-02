@@ -1,35 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8" />
     <title>Scoreboard</title>
     <script src="//code.jquery.com/jquery-latest.js"></script>
     <script src="myclient.js"></script>
     <link href='//fonts.googleapis.com/css?family=Michroma' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="style.css">
-  </head>
+</head>
 
-  <body>
+<body>
     <div id="title">Ping Pong Scoreboard</div>
     <div class="container">
         <div class="scoreSection red">
-          <div id="player1Name"></div>
-          <div id="player1Score"></div>
-          <div class="controls">
-            <div class="redDown" onclick="decreaseScore(0)">-</div>
-            <div class="redUp" onclick="increaseScore(0)">+</div>
-          </div>
+            <div id="player1Name" class="unselectable"></div>
+            <div id="player1Score" class="unselectable"></div>
+            <div class="controls">
+                <div class="redDown" onclick="decreaseScore(0)">
+                    <div class="unselectable">-</div>
+                </div>
+                <div class="redUp" onclick="increaseScore(0)">
+                    <div class="unselectable">+</div>
+                </div>
+            </div>
         </div>
         <div class="scoreSection blue">
-          <div id="player2Name"></div>
-          <div id="player2Score"></div>
-          <div class="controls">
-            <div class="blueDown" onclick="decreaseScore(1)">-</div>
-            <div class="blueUp" onclick="increaseScore(1)">+</div>
-          </div>
+            <div id="player2Name" class="unselectable"></div>
+            <div id="player2Score" class="unselectable"></div>
+            <div class="controls">
+                <div class="blueDown" onclick="decreaseScore(1)">
+                    <div class="unselectable">-</div>
+                </div>
+                <div class="blueUp" onclick="increaseScore(1)">
+                    <div class="unselectable">+</div>
+                </div>
+            </div>
         </div>
-
-          <div class="reset" onclick="resetScores()">NEW GAME</div>
+        <div class="reset" onclick="resetScores()">
+            <div class="unselectable">RESET</div>
+        </div>
     </div>
-  </body>
+</body>
+
 </html>

@@ -15,7 +15,7 @@ body {
 .container { text-align: center; overflow: auto;}
 .scoreSection {
 	width: 50%;
-	min-height: 80vh;
+	height: 90vh;
 }
 
 .red {
@@ -63,7 +63,7 @@ body {
 .reset {
 	font-size: 3em;
 	position: fixed;
-	height:2em;
+	height:10vh;
 	bottom:0;
 	left:0;
 	right:0;
@@ -74,4 +74,13 @@ body {
 .reset:hover {
 	color: white;
 	background-color: black;
+}
+
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
